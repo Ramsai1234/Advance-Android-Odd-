@@ -310,14 +310,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 ## OUTPUT:
 ![Screenshot 2023-04-30 101110](https://user-images.githubusercontent.com/94269989/235336579-79e5a189-c8ed-4987-9285-6f6652f10f2a.png)
 
-Insert
+## Insert
 ![image](https://user-images.githubusercontent.com/94269989/235336792-c7bd7ac3-31fb-4d2d-9b2d-d94a0709daf7.png)
 
 
-Fetch
+## Fetch
 ![Screenshot 2023-04-30 102435](https://user-images.githubusercontent.com/94269989/235336760-f8ac5e40-d46d-47ae-a1e6-ae1eeab965a4.png)
 
-Update
+## Update
 ![Screenshot 2023-04-30 102435](https://user-images.githubusercontent.com/94269989/235336714-a13d4550-6fa9-42dc-a90b-4996d386bd45.png)
 
 
