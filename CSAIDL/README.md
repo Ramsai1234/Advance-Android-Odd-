@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 ```
 
-##Activity_main.xml:-
+## Activity_main.xml:-
 ```
 
 <?xml version="1.0" encoding="utf-8"?>
