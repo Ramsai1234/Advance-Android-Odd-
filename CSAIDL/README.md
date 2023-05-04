@@ -29,12 +29,177 @@ Step 7: Save and run the application.
 ```
 /*
 Program to print the client/server services using AIDL”.
-Developed by:
-Registeration Number :
+Developed by:P.RAMSAI
+Registeration Number :212221240041
 */
 ```
+## MainActivity.java:-
+```
+package com.example.aidlapp88;
 
-## OUTPUT
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    EditText editFirstNumber,editSecondnumber;
+    Button btnMultiply;
+    TextView txtResult;
+    MultiplyInterface myInterface;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editFirstNumber = (EditText) findViewById(R.id.editFirstNumber);
+        editSecondnumber = (EditText) findViewById(R.id.editSecondNumber);
+        btnMultiply = (Button) findViewById(R.id.btnMultiply);
+        txtResult = (TextView) findViewById(R.id.txtResult);
+
+        btnMultiply.setOnClickListener(MainActivity.this);
+
+        Intent multiplyService = new Intent(MainActivity.this, MultiplicationService.class);
+
+        bindService(multiplyService, myServiceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+        ServiceConnection myServiceConnection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+
+                myInterface = MultiplyInterface.Stub.asInterface(iBinder);
+
+            }
+                @Override
+                        public void onServiceDisconnected(ComponentName componentName)
+                {
+
+                }
+
+
+
+            };
+    @Override
+    public void onClick(View v) {
+
+        int firstNumber = Integer.parseInt(editFirstNumber.getText().toString());
+        int secondNumber = Integer.parseInt(editSecondnumber.getText().toString());
+
+        try{
+            int result = myInterface.multiplyTwoValuesTogether(firstNumber,secondNumber);
+            txtResult.setText(result + "");
+
+        }catch(RemoteException e){
+            e.printStackTrace();
+        }
+
+    }
+}
+
+```
+
+##Activity_main.xml:-
+```
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/editFirstNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editSecondNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/btnMultiply"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Multiply" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:text="textview" />
+
+</LinearLayout>
+
+```
+## MultiplyInterrface.aidl:-
+```
+// MultiplyInterface.aidl
+package com.example.aidlapp88;
+
+// Declare any non-default types here with import statements
+
+interface MultiplyInterface {
+
+     int multiplyTwoValuesTogether(int firstnumber, int secondnumber);
+}
+
+```
+##  MultiplicationService.java:-
+
+```
+package com.example.aidlapp88;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.IBinder;
+import android.os.RemoteException;
+
+public class MultiplicationService extends Service {
+    public MultiplicationService() {
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return myBinder;
+
+    }
+    MultiplyInterface.Stub myBinder = new MultiplyInterface.Stub() {
+        @Override
+        public int multiplyTwoValuesTogether(int firstnumber, int secondnumber)
+                throws RemoteException {
+           return firstnumber * secondnumber;
+        }
+    };
+}
+
+```
+
+
+## OUTPUT:-
+
+![image](https://user-images.githubusercontent.com/94269989/236112567-a8a6842e-20a7-457b-be2a-31efae6c7884.png)
+
+![aidl](https://user-images.githubusercontent.com/94269989/236112834-cbc24665-3ddb-43ac-9582-74ac6738d277.png)
 
 
 
