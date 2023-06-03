@@ -27,14 +27,13 @@ Step 7: Save and run the application.
 
 ## PROGRAM:
 
-/*
+```
 Program to print the process of runtimepermission in android mobile devices”.
 Developed by: P.Ramsai
 Registeration Number : 212221240041
-*/
-
+```
 ## Main Activity.java
-
+```
 package com.example.runtimepermission;
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -120,9 +119,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
+```
 ## Activity_main.xml
-
+```
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -172,9 +171,9 @@ public class MainActivity extends AppCompatActivity {
         app:layout_constraintVertical_bias="0.148" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
+```
 ## Manifest.xml
-
+```
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
@@ -205,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
     </application>
 
 </manifest>
-
+```
 ## OUTPUT
 
 ![exp6-1](https://github.com/Vivekreddy8360/Advance-Android-Odd-/assets/94525701/4c0601d3-46c1-4977-a214-09d1fe3101d5)
